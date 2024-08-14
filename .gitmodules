@@ -4,3 +4,9 @@
 [submodule "open_llama_3b"]
 	path = open_llama_3b
 	url = https://huggingface.co/openlm-research/open_llama_3b
+[submodule "llama-folder/llama.cpp"]
+	path = llama-folder/llama.cpp
+	url = https://github.com/ggerganov/llama.cpp.git
+[submodule "llama-folder/open_llama_3b"]
+	path = llama-folder/open_llama_3b
+	url = https://huggingface.co/openlm-research/open_llama_3b.git
