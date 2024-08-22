@@ -1,4 +1,5 @@
 from flask import Flask, request, jsonify
+import subprocess, os 
 
 app = Flask(__name__)
 
@@ -14,9 +15,13 @@ def query_llama():
 
     responses = []
     for query in queries:
+        
+        # define the llama_bin_path variable 
+        llama_bin_path = os.path.join(os.getcwd(), 'llama.cpp', 'build', 'bin')
+
         # Run Llama command
-        command = f'./llama.cpp/build/bin/llama-cli -m ./models/3B/Open_Llama_3B-3.4B-F16.gguf -p "{query}"'
-        result = subprocess.run(command, shell=True, stdout=subprocess.PIPE)
+        command = f'./llama-cli -m ../../models/3B/Open_Llama_3B-3.4B-F16.gguf -p "{query}"'
+        result = subprocess.run(command, cwd=llama_bin_path, shell=True, stdout=subprocess.PIPE)
         
         # Collect the output
         response = result.stdout.decode('utf-8').strip()
